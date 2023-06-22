@@ -18,10 +18,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:#141625;
+}
+
+.invoice {
+  background: #1E2139;
+}
+
+.btn {
+  background-color: #7C5DFA;
 }
