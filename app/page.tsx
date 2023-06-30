@@ -1,8 +1,10 @@
 import { Key } from "react";
+import PostBtn from "./components/PostBtn";
+import LikeBtn from "./components/buttons/LikeBtn";
 
 async function getData() {
   const res = await fetch(
-    "http://127.0.0.1:8090/api/collections/posts/records",
+    "http://127.0.0.1:8090/api/collections/posts/records?sort=-created",
     {
       next: {
         revalidate: 10,
@@ -29,12 +31,15 @@ export default async function Home() {
       <div className="flex flex-col max-w-xl gap-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl">Posts</h2>
-          <button className="btn p-2 rounded-2xl">New Post</button>
+          <PostBtn />
         </div>
 
         {data.items?.map((post: PostType) => (
           <div className="invoice p-5 rounded-3xl">
-            <p className="text-gray-300">{post.username}</p>
+            <div className="flex justify-between">
+              <p className="text-gray-300">{post.username}</p>
+              <LikeBtn />
+            </div>
             <p>{post.content}</p>
           </div>
         ))}
